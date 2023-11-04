@@ -3,10 +3,17 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    @apply h-screen;
+    @apply text-[62.5%];
+    @apply bg-gray-100;
+  }
 
   body {
-    @apply bg-gray-100;
     @apply font-roboto;
+    @apply h-full;
+    @apply max-w-[112rem];
+    @apply mx-auto my-0;
   }
   
   input, button {
