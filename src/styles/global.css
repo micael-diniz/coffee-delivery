@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  body {
+    @apply bg-gray-100;
+    @apply font-roboto;
+  }
+  
+  input, button {
+    @apply font-roboto;
+  }
+
+}
