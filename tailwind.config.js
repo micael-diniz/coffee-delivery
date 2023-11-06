@@ -13,7 +13,7 @@ export default {
     extend: {
       fontFamily: {
         roboto: ['Roboto', 'sans-serif'],
-        baloo2: ['Baloo 2', 'sans-serif'],
+        baloo2: ["'Baloo 2'", 'sans-serif'],
       },
       colors: {
         ...colors,
