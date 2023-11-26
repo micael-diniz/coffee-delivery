@@ -1,11 +1,11 @@
-import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react';
-import heroIllustration from '../../../../assets/hero-illustration.png';
-import heroBackground from '../../../../assets/hero-background.svg';
+import { Coffee, Package, ShoppingCart, Timer } from 'phosphor-react'
+import heroIllustration from '../../../../assets/hero-illustration.png'
+import heroBackground from '../../../../assets/hero-background.svg'
 
 export function Hero() {
   return (
     <section className={`relative flex justify-between py-[9.2rem]`}>
-      <img src={heroBackground} alt="" className={`absolute`} />
+      <img src={heroBackground} alt="" className={`absolute w-screen`} />
       <div className={`containerArea flex w-full justify-between`}>
         <article className="max-w-[58.8rem]">
           <h3 className="mb-[1.6rem] font-baloo2 text-[4.8rem] font-extrabold text-gray-900">
@@ -57,5 +57,5 @@ export function Hero() {
         <img src={heroIllustration} alt="" />
       </div>
     </section>
-  );
+  )
 }

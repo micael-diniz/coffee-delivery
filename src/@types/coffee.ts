@@ -7,7 +7,7 @@ type CoffeeTagType =
 
 export type CoffeeType = {
   id: string
-  image: unknown
+  image: string
   tags: CoffeeTagType[]
   name: string
   description: string

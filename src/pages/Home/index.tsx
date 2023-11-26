@@ -1,4 +1,4 @@
-import { CoffeeList } from './components/CoffeList'
+import { CoffeeList } from './components/CoffeeList'
 import { Hero } from './components/Hero'
 
 export function Home() {
