@@ -6,7 +6,7 @@ export function CoffeeList() {
   const coffeeList = useMemo(() => getCoffeesList(), [])
 
   return (
-    <section>
+    <section className={`containerArea`}>
       <h3>Nossos cafés</h3>
       <ul>
         {coffeeList.map((coffee) => (

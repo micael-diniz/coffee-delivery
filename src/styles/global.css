@@ -12,12 +12,15 @@
   body {
     @apply font-roboto;
     @apply h-full;
-    @apply max-w-[112rem];
-    @apply mx-auto my-0;
   }
   
   input, button {
     @apply font-roboto;
+  }
+
+  .containerArea {
+    @apply max-w-[112rem];
+    @apply mx-auto;
   }
 
 }
