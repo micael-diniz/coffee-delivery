@@ -9,7 +9,7 @@ type CoffeeCardCardProps = {
 export function CoffeeCartCard({ coffee }: CoffeeCardCardProps) {
   return (
     <li>
-      <img src={coffee.image} alt={coffee.name} />
+      <img src={coffee.image} alt={coffee.name} className={`max-w-[6.4rem]`} />
       <div>
         <div>
           <h3>{coffee.name}</h3>
