@@ -17,7 +17,11 @@ export function AddressForm() {
           </div>
         </div>
         <form className={`flex flex-col gap-y-[1.6rem]`}>
-          <TextInput type="text" placeholder="CEP" />
+          <TextInput
+            type="text"
+            placeholder="CEP"
+            containerStyle={`max-w-[20rem]`}
+          />
           <TextInput type="text" placeholder="Rua" inputStyle="w-full" />
           <div className={`flex gap-x-[1.2rem]`}>
             <TextInput
