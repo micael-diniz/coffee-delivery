@@ -4,7 +4,7 @@ import { TotalSummary } from '../TotalSummary'
 
 export function CheckoutSummary() {
   return (
-    <aside>
+    <aside className={`w-[40%]`}>
       <CoffeeCartList />
       <TotalSummary />
       <ConfirmOrder />
