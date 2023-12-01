@@ -1,9 +1,17 @@
 import { Minus, Plus } from 'phosphor-react'
+import { twMerge } from 'tailwind-merge'
 
-export function QuantitySelector() {
+type QuantitySelectorProps = {
+  containerClass?: string
+}
+
+export function QuantitySelector({ containerClass }: QuantitySelectorProps) {
   return (
     <div
-      className={`ml-auto box-border flex h-[3.8rem] w-full max-w-[7.2rem] items-center justify-between rounded-[6px] bg-gray-400 p-[0.8rem]`}
+      className={twMerge(
+        `ml-auto box-border flex h-[3.8rem] w-full max-w-[7.2rem] items-center justify-between rounded-[6px] bg-gray-400 p-[0.8rem]`,
+        containerClass,
+      )}
     >
       <button>
         <Minus size={14} weight="bold" className="text-purple-500" />
