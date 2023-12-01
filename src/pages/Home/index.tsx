@@ -3,7 +3,7 @@ import { Hero } from './components/Hero'
 
 export function Home() {
   return (
-    <main>
+    <main className={`pb-[4rem]`}>
       <Hero />
       <CoffeeList />
     </main>

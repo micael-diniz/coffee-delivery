@@ -6,7 +6,7 @@ export function CoffeeList() {
 
   return (
     <section
-      className={`containerArea flex flex-col gap-y-[5.4rem] py-[3.2rem]`}
+      className={`containerArea flex flex-col gap-y-[5.4rem] pt-[3.2rem]`}
     >
       <h3 className={`font-baloo2 text-[3.2rem] font-extrabold text-gray-800`}>
         Nossos cafés
