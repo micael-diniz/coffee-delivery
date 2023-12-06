@@ -1,3 +1,9 @@
+import { SummarySuccess } from './components/SuccessSummary'
+
 export function OrderPlaced() {
-  return <h1>Success</h1>
+  return (
+    <main>
+      <SummarySuccess />
+    </main>
+  )
 }
