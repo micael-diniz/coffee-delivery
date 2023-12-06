@@ -4,7 +4,7 @@ import { TotalShipping } from '../TotalShipping'
 
 export function TotalSummary() {
   return (
-    <section>
+    <section className={`flex flex-col gap-y-[1.2rem]`}>
       <TotalItems />
       <TotalShipping />
       <Total />

@@ -11,7 +11,7 @@ export function CheckoutSummary() {
         Cafés selecionados
       </h4>
       <section
-        className={`mt-[0.3rem] rounded-bl-[44px] rounded-br-[6px] rounded-tl-[6px] rounded-tr-[44px] bg-gray-200 p-[4rem]`}
+        className={`mt-[0.3rem] flex flex-col gap-y-[2.4rem] rounded-bl-[44px] rounded-br-[6px] rounded-tl-[6px] rounded-tr-[44px] bg-gray-200 p-[4rem]`}
       >
         <CoffeeCartList />
         <TotalSummary />

@@ -23,7 +23,7 @@ export function CoffeeCartList() {
   ]
   return (
     <section>
-      <ul>
+      <ul className={`flex flex-col gap-y-[2.4rem]`}>
         {cart.map((coffee) => (
           <CoffeeCartCard key={coffee.id} coffee={coffee} />
         ))}
