@@ -20,10 +20,21 @@ export function CoffeeCartList() {
       tags: ['tradicional', 'com leite'],
       image: 'https://i.ibb.co/gDpccbQ/latte.png',
     },
+    {
+      id: '4b8d6f2c1e',
+      name: 'Latte',
+      description:
+        'Uma dose de café expresso com o dobro de leite e espuma cremosa',
+      price: 990,
+      tags: ['tradicional', 'com leite'],
+      image: 'https://i.ibb.co/gDpccbQ/latte.png',
+    },
   ]
   return (
     <section>
-      <ul className={`flex flex-col gap-y-[2.4rem]`}>
+      <ul
+        className={`flex max-h-[24.6rem] flex-col gap-y-[4.8rem] overflow-x-hidden overflow-y-scroll pr-[0.8rem]`}
+      >
         {cart.map((coffee) => (
           <CoffeeCartCard key={coffee.id} coffee={coffee} />
         ))}

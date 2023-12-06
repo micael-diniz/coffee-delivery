@@ -9,7 +9,9 @@ type CoffeeCardCardProps = {
 export function CoffeeCartCard({ coffee }: CoffeeCardCardProps) {
   return (
     <>
-      <li className={`flex gap-x-[2rem] px-[0.4rem] py-[0.8rem]`}>
+      <li
+        className={`relative flex gap-x-[2rem] px-[0.4rem] py-[0.8rem] after:absolute after:bottom-[-2.4rem] after:h-[0.1rem] after:w-full after:bg-gray-400 after:content-['']`}
+      >
         <img
           src={coffee.image}
           alt={coffee.name}
@@ -35,7 +37,7 @@ export function CoffeeCartCard({ coffee }: CoffeeCardCardProps) {
           </div>
         </div>
       </li>
-      <div className={`h-[0.1rem] w-full bg-gray-400`} />
+      {/* <div className={`h-[0.1rem] w-full bg-gray-400`} /> */}
     </>
   )
 }
