@@ -1,9 +1,9 @@
-import { SummarySuccess } from './components/SuccessSummary'
+import { SuccessSummary } from './components/SuccessSummary'
 
 export function OrderPlaced() {
   return (
     <main className={`containerArea pt-[4.8rem]`}>
-      <SummarySuccess />
+      <SuccessSummary />
     </main>
   )
 }

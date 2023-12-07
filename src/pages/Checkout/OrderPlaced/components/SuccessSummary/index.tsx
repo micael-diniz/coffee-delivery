@@ -3,9 +3,9 @@ import { Summary } from '../Summary'
 import { Title } from '../Title'
 import successIllustration from '../../../../../assets/success-illustration.svg'
 
-export function SummarySuccess() {
+export function SuccessSummary() {
   return (
-    <section>
+    <section className={`flex justify-between`}>
       <div>
         <Title />
         <Description />
