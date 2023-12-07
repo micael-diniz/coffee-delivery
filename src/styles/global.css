@@ -44,4 +44,25 @@
     background: #555;
   }
 
+  .successSumaryBorder {
+    background: white;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+  
+  .successSumaryBorder::before {
+    content: "";
+    background: linear-gradient(45deg, #DBAC2C, #8047F8);
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: inherit;
+    z-index: -1;
+    margin: -1px;
+    position: absolute;
+  }
+
 }
