@@ -10,7 +10,7 @@ export function CoffeeCartCard({ coffee }: CoffeeCardCardProps) {
   return (
     <>
       <li
-        className={`relative flex gap-x-[2rem] px-[0.4rem] py-[0.8rem] after:absolute after:bottom-[-2.4rem] after:h-[0.1rem] after:w-full after:bg-gray-400 after:content-['']`}
+        className={`coffeeCartCardContainer relative flex gap-x-[2rem] px-[0.4rem] py-[0.8rem]`}
       >
         <img
           src={coffee.image}

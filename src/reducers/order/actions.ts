@@ -1,3 +1,5 @@
+import { CoffeeType } from '../../@types/coffee'
+
 export enum ActionTypes {
   ADD_ITEM = 'ADD_ITEM',
 }
@@ -5,13 +7,13 @@ export enum ActionTypes {
 type AddItemActionType = {
   type: ActionTypes.ADD_ITEM
   payload: {
-    item: unknown
+    item: CoffeeType
   }
 }
 
 export type OrderAction = AddItemActionType
 
-export function addItemAction(item: unknown) {
+export function addItemAction(item: CoffeeType) {
   return {
     type: ActionTypes.ADD_ITEM,
     payload: {

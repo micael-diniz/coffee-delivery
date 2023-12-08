@@ -1,7 +1,8 @@
+import { CoffeeType } from '../../@types/coffee'
 import { ActionTypes, OrderAction } from './actions'
 
 type OrderState = {
-  cart: unknown[]
+  cart: CoffeeType[]
 }
 
 export function orderReducer(state: OrderState, action: OrderAction) {

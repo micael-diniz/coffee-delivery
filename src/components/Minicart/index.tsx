@@ -1,9 +1,12 @@
 import { Badge } from '@nextui-org/react'
 import { ShoppingCart } from 'phosphor-react'
 import { useNavigate } from 'react-router-dom'
+import { useOrder } from '../../contexts/OrderContext'
 
 export function Minicart() {
   const navigate = useNavigate()
+  const { cart } = useOrder()
+  console.log({ cart })
   return (
     <Badge
       content="3"

@@ -1,8 +1,9 @@
-import { ReactNode, createContext, useReducer } from 'react'
+import { ReactNode, createContext, useContext, useReducer } from 'react'
 import { orderReducer } from '../reducers/order/reducer'
+import { CoffeeType } from '../@types/coffee'
 
 interface OrderContextType {
-  cart: unknown[]
+  cart: CoffeeType[]
 }
 
 export const OrderContext = createContext({} as OrderContextType)
@@ -29,3 +30,5 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
     </OrderContext.Provider>
   )
 }
+
+export const useOrder = () => useContext(OrderContext)

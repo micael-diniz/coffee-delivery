@@ -65,4 +65,13 @@
     position: absolute;
   }
 
+  ul > .coffeeCartCardContainer:not(:last-child):after {
+    position:absolute;
+    bottom: -2.4rem;
+    height: 0.1rem;
+    width: 100%;
+    background-color: #E6E5E5;
+    content: '';
+  }
+
 }
