@@ -1,4 +1,3 @@
-import { CoffeeType } from '../../../../@types/coffee'
 import { useOrder } from '../../../../contexts/OrderContext'
 import { CoffeeCartCard } from '../CoffeeCartCard'
 

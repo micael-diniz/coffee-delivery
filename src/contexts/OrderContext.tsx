@@ -1,11 +1,15 @@
 import { ReactNode, createContext, useContext, useReducer } from 'react'
 import { orderReducer } from '../reducers/order/reducer'
 import { CoffeeType } from '../@types/coffee'
-import { addItemAction } from '../reducers/order/actions'
+import {
+  addItemAction,
+  removeOneItemQuantityAction,
+} from '../reducers/order/actions'
 
 interface OrderContextType {
   cart: CoffeeType[]
   addItemToCart: (item: CoffeeType) => void
+  removeOneItemQuantity: (id: CoffeeType['id']) => void
 }
 
 export const OrderContext = createContext({} as OrderContextType)
@@ -25,11 +29,16 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
     dispatch(addItemAction(item))
   }
 
+  function removeOneItemQuantity(id: CoffeeType['id']) {
+    dispatch(removeOneItemQuantityAction(id))
+  }
+
   return (
     <OrderContext.Provider
       value={{
         cart,
         addItemToCart,
+        removeOneItemQuantity,
       }}
     >
       {children}

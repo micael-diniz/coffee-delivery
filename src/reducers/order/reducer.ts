@@ -29,6 +29,21 @@ export function orderReducer(state: OrderState, action: OrderAction) {
         draft.cart[itemIndexInCart] = itemToUpdate
       })
     }
+
+    case ActionTypes.REMOVE_ONE_ITEM_QUANTITY: {
+      const { id } = action.payload
+      const itemIndexInCart = state.cart.findIndex((i) => i.id === id)
+      if (itemIndexInCart === -1) return state
+
+      return produce(state, (draft) => {
+        const itemToUpdate = draft.cart[itemIndexInCart]
+        if (itemToUpdate.quantity && itemToUpdate.quantity > 1) {
+          itemToUpdate.quantity -= 1
+        }
+        draft.cart[itemIndexInCart] = itemToUpdate
+      })
+    }
+
     default:
       return state
   }

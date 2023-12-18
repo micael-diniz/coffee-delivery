@@ -2,12 +2,24 @@ import { Trash } from 'phosphor-react'
 import { CoffeeType } from '../../../../@types/coffee'
 import { Price } from '../../../../components/Price'
 import { QuantitySelector } from '../../../../components/QuantitySelector'
-import { useState } from 'react'
+import { useCallback } from 'react'
+import { useOrder } from '../../../../contexts/OrderContext'
 
 type CoffeeCardCardProps = {
   coffee: CoffeeType
 }
 export function CoffeeCartCard({ coffee }: CoffeeCardCardProps) {
+  const { addItemToCart, removeOneItemQuantity } = useOrder()
+
+  const handleAddToCart = useCallback(() => {
+    const coffeeWithQty = { ...coffee, quantity: 1 }
+    addItemToCart(coffeeWithQty)
+  }, [addItemToCart, coffee])
+
+  const handleRemoveOneItemQuantity = useCallback(() => {
+    removeOneItemQuantity(coffee.id)
+  }, [coffee.id, removeOneItemQuantity])
+
   return (
     <>
       <li
@@ -32,6 +44,8 @@ export function CoffeeCartCard({ coffee }: CoffeeCardCardProps) {
             <QuantitySelector
               containerClass={`ml-0`}
               quantity={coffee.quantity as number}
+              onIncreaseQuantity={handleAddToCart}
+              onDecreaseQuantity={handleRemoveOneItemQuantity}
             />
             <button
               className={`flex items-center gap-x-[0.4rem] rounded-[6px] bg-gray-400 px-[0.8rem] py-[0.65rem] text-[1.2rem] uppercase leading-[160%] text-gray-700`}
