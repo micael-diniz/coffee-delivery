@@ -18,10 +18,10 @@ export function CoffeeCartList() {
         <div
           className={`flex h-full flex-col items-center justify-center gap-y-[3.2rem]`}
         >
-          <Bag size={64} weight="fill" />
+          <Bag size={64} weight="fill" className={`text-yellow-500`} />
 
           <p
-            className={`text-center font-baloo2 text-[1.8rem] leading-[130%] text-gray-800`}
+            className={`text-center font-baloo2 text-[2.4rem] leading-[130%] text-gray-800`}
           >
             Carrinho vazio :(
           </p>

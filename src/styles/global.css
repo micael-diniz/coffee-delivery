@@ -74,4 +74,8 @@
     content: '';
   }
 
+  .toastOptions {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.01), 0 1px 3px rgba(0, 0, 0, 0.01);
+  }
+
 }

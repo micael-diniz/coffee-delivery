@@ -4,6 +4,7 @@ import { Price } from '../../../../components/Price'
 import { QuantitySelector } from '../../../../components/QuantitySelector'
 import { useCallback, useState } from 'react'
 import { useOrder } from '../../../../contexts/OrderContext'
+import toast, { Toaster } from 'react-hot-toast'
 
 type CoffeeCardProps = {
   coffee: CoffeeType
@@ -28,6 +29,11 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
   const handleAddToCart = useCallback(() => {
     const coffeeWithQty = { ...coffee, quantity }
     addItemToCart(coffeeWithQty)
+    toast.dismiss()
+    toast.success('Item adicionado!', {
+      duration: 3000,
+      position: 'top-center',
+    })
   }, [addItemToCart, coffee, quantity])
 
   return (
@@ -73,6 +79,11 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
         >
           <ShoppingCart size={22} weight="fill" className="fill-gray-200" />
         </button>
+        <Toaster
+          toastOptions={{
+            className: `toastOptions text-[1.6rem]`,
+          }}
+        />
       </div>
     </li>
   )
