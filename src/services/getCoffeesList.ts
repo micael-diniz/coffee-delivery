@@ -8,6 +8,7 @@ const coffeeList: CoffeeType[] = [
     price: 990,
     tags: ['tradicional'],
     image: 'https://i.ibb.co/crhZzLs/expresso-tradicional.png',
+    available: true,
   },
   {
     id: '8c1e9b4ad6',
@@ -16,6 +17,7 @@ const coffeeList: CoffeeType[] = [
     price: 990,
     tags: ['tradicional'],
     image: 'https://i.ibb.co/19pT8ck/expresso-americano.png',
+    available: true,
   },
   {
     id: '2f7c6e5d8a',
@@ -24,6 +26,7 @@ const coffeeList: CoffeeType[] = [
     price: 990,
     tags: ['tradicional'],
     image: 'https://i.ibb.co/5RJxYkb/expresso-cremoso.png',
+    available: true,
   },
   {
     id: '9d3b2a4c6f',
@@ -32,6 +35,7 @@ const coffeeList: CoffeeType[] = [
     price: 990,
     tags: ['tradicional', 'gelado'],
     image: 'https://i.ibb.co/PDCXtNm/expresso-gelado.png',
+    available: true,
   },
   {
     id: '7e5a1c3b9d',
@@ -40,6 +44,7 @@ const coffeeList: CoffeeType[] = [
     price: 990,
     tags: ['tradicional', 'com leite'],
     image: 'https://i.ibb.co/kqhmX0G/cafe-com-leite.png',
+    available: true,
   },
   {
     id: '4b8d6f2c1e',
@@ -49,6 +54,7 @@ const coffeeList: CoffeeType[] = [
     price: 990,
     tags: ['tradicional', 'com leite'],
     image: 'https://i.ibb.co/gDpccbQ/latte.png',
+    available: true,
   },
   {
     id: '1a9c7b3d5f',
@@ -58,6 +64,7 @@ const coffeeList: CoffeeType[] = [
     price: 990,
     tags: ['tradicional', 'com leite'],
     image: 'https://i.ibb.co/vkHY8qb/capuccino.png',
+    available: true,
   },
   {
     id: '6e2f4d9c7b',
@@ -67,6 +74,7 @@ const coffeeList: CoffeeType[] = [
     price: 990,
     tags: ['tradicional', 'com leite'],
     image: 'https://i.ibb.co/hLzZJvG/macchiato.png',
+    available: true,
   },
   {
     id: '3c8a5b9d1e',
@@ -75,6 +83,7 @@ const coffeeList: CoffeeType[] = [
     price: 990,
     tags: ['tradicional', 'com leite'],
     image: 'https://i.ibb.co/gmmW2hK/mocaccino.png',
+    available: true,
   },
   {
     id: 'fd2c8b6a9e',
@@ -83,6 +92,7 @@ const coffeeList: CoffeeType[] = [
     price: 990,
     tags: ['especial', 'com leite'],
     image: 'https://i.ibb.co/KmNtg15/chocolate-quente.png',
+    available: true,
   },
   {
     id: 'b4d8e7f3a1',
@@ -92,6 +102,7 @@ const coffeeList: CoffeeType[] = [
     price: 990,
     tags: ['especial', 'alcoólico', 'gelado'],
     image: 'https://i.ibb.co/DpgwfyM/cubano.png',
+    available: true,
   },
   {
     id: '7a5d2b4c9f',
@@ -100,6 +111,7 @@ const coffeeList: CoffeeType[] = [
     price: 990,
     tags: ['especial'],
     image: 'https://i.ibb.co/bdyKBzK/havaiano.png',
+    available: true,
   },
   {
     id: '3e6a7d4b1f',
@@ -108,6 +120,7 @@ const coffeeList: CoffeeType[] = [
     price: 990,
     tags: ['especial'],
     image: 'https://i.ibb.co/ckzBMh3/arabe.png',
+    available: true,
   },
   {
     id: '5c9b8d2f4e',
@@ -116,6 +129,7 @@ const coffeeList: CoffeeType[] = [
     price: 990,
     tags: ['especial', 'alcoólico'],
     image: 'https://i.ibb.co/qyyQSrq/irlandes.png',
+    available: true,
   },
 ]
 

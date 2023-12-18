@@ -1,27 +1,32 @@
-# React + TypeScript + Vite
+# Coffee Delivery
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Challenge proposed by Rocketseat's Ignite course related to Hooks in React.
 
-Currently, two official plugins are available:
+**Briefing:** [Notion](https://efficient-sloth-d85.notion.site/Desafio-02-Coffee-Delivery-30e42a21fdb44b09a85244fc2c3dbdf9)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- List of coffees available for purchase 
+- Add a specific number of items to the cart
+- Increase or remove the number of items in the cart
+- Form for the user to fill in their address
+- Display the total items in the cart in the Header
+- Display the total value of the sum of items in the cart multiplied by the value
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Concepts
 
-- Configure the top-level `parserOptions` property like this:
+- States
+- ContextAPI
+- LocalStorage
+- Immutability of the state
+- Lists and keys in ReactJS
+- Properties
+- Componentization
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+## Icons
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Phosphor icons
+
+## Design
+
+Figma: [Coffee Delivery](<https://www.figma.com/file/5yT9ZzZmRQRS4yivGGB3pl/Coffee-Delivery-%E2%80%A2-Desafio-React/duplicate?type=design&node-id=2-12&mode=design>)

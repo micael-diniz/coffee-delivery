@@ -2,12 +2,34 @@ import { ShoppingCart } from 'phosphor-react'
 import { CoffeeType } from '../../../../@types/coffee'
 import { Price } from '../../../../components/Price'
 import { QuantitySelector } from '../../../../components/QuantitySelector'
+import { useCallback, useState } from 'react'
+import { useOrder } from '../../../../contexts/OrderContext'
 
 type CoffeeCardProps = {
   coffee: CoffeeType
 }
 
 export function CoffeeCard({ coffee }: CoffeeCardProps) {
+  const { addItemToCart } = useOrder()
+
+  const [quantity, setQuantity] = useState(1)
+
+  const handleIncreaseQuantity = useCallback(() => {
+    setQuantity((prevQty) => (prevQty += 1))
+  }, [])
+
+  const handleDecreaseQuantity = useCallback(() => {
+    setQuantity((prevQty) => {
+      if (prevQty === 1) return prevQty
+      return prevQty - 1
+    })
+  }, [])
+
+  const handleAddToCart = useCallback(() => {
+    const coffeeWithQty = { ...coffee, quantity }
+    addItemToCart(coffeeWithQty)
+  }, [addItemToCart, coffee, quantity])
+
   return (
     <li
       className={`flex max-h-[33rem] max-w-[25.6rem] flex-col items-center gap-y-[0.8rem] rounded-bl-[36px] rounded-br-[6px] rounded-tl-[6px] rounded-tr-[36px] bg-gray-200 px-[2.4rem] pb-[2rem]`}
@@ -40,8 +62,15 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
           value={coffee.price}
           valueStyle="text-[2.4rem] font-baloo2 font-extrabold"
         />
-        <QuantitySelector />
-        <button className={`rounded-[6px] bg-purple-700 p-[0.8rem]`}>
+        <QuantitySelector
+          quantity={quantity}
+          onIncreaseQuantity={handleIncreaseQuantity}
+          onDecreaseQuantity={handleDecreaseQuantity}
+        />
+        <button
+          onClick={handleAddToCart}
+          className={`rounded-[6px] bg-purple-700 p-[0.8rem]`}
+        >
           <ShoppingCart size={22} weight="fill" className="fill-gray-200" />
         </button>
       </div>

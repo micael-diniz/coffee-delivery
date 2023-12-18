@@ -12,9 +12,10 @@ export function CoffeeList() {
         Nossos cafés
       </h3>
       <ul className={`flex flex-wrap gap-x-[3.2rem] gap-y-[4rem]`}>
-        {coffeeList.map((coffee) => (
-          <CoffeeCard key={coffee.id} coffee={coffee} />
-        ))}
+        {coffeeList.map(
+          (coffee) =>
+            coffee.available && <CoffeeCard key={coffee.id} coffee={coffee} />,
+        )}
       </ul>
     </section>
   )

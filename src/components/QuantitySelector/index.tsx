@@ -1,11 +1,23 @@
 import { Minus, Plus } from 'phosphor-react'
+import { useCallback } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 type QuantitySelectorProps = {
+  quantity: number
+  onIncreaseQuantity: () => void
+  onDecreaseQuantity: () => void
   containerClass?: string
 }
 
-export function QuantitySelector({ containerClass }: QuantitySelectorProps) {
+export function QuantitySelector({
+  quantity,
+  onIncreaseQuantity,
+  onDecreaseQuantity,
+  containerClass,
+}: QuantitySelectorProps) {
+  const handleIncrease = useCallback(onIncreaseQuantity, [onIncreaseQuantity])
+  const handleDecrease = useCallback(onDecreaseQuantity, [onDecreaseQuantity])
+
   return (
     <div
       className={twMerge(
@@ -13,13 +25,13 @@ export function QuantitySelector({ containerClass }: QuantitySelectorProps) {
         containerClass,
       )}
     >
-      <button>
+      <button onClick={handleDecrease}>
         <Minus size={14} weight="bold" className="text-purple-500" />
       </button>
       <span className={`max-w-[2rem] text-center text-[1.6rem] text-gray-900`}>
-        1
+        {quantity}
       </span>
-      <button>
+      <button onClick={handleIncrease}>
         <Plus size={16} weight="bold" className="text-purple-500" />
       </button>
     </div>

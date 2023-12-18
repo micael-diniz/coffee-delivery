@@ -13,4 +13,5 @@ export type CoffeeType = {
   description: string
   price: number
   quantity?: number
+  available: boolean
 }
