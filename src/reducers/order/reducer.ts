@@ -1,9 +1,11 @@
 import { produce } from 'immer'
 import { CoffeeType } from '../../@types/coffee'
 import { ActionTypes, OrderAction } from './actions'
+import { ShippingType } from '../../@types/shipping'
 
 type OrderState = {
   cart: CoffeeType[]
+  shipping: ShippingType
 }
 
 export function orderReducer(state: OrderState, action: OrderAction) {

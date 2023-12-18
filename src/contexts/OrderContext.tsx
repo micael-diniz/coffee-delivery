@@ -12,6 +12,8 @@ import {
   removeItemAction,
   removeOneItemQuantityAction,
 } from '../reducers/order/actions'
+import { getEmptyAddress } from '../utils'
+import { ShippingType } from '../@types/shipping'
 
 interface OrderContextType {
   cart: CoffeeType[]
@@ -19,6 +21,7 @@ interface OrderContextType {
   removeOneItemQuantity: (id: CoffeeType['id']) => void
   removeItem: (id: CoffeeType['id']) => void
   itemsTotal: number
+  shipping: ShippingType
 }
 
 export const OrderContext = createContext({} as OrderContextType)
@@ -30,9 +33,13 @@ type OrderContextProviderProps = {
 export function OrderContextProvider({ children }: OrderContextProviderProps) {
   const [orderState, dispatch] = useReducer(orderReducer, {
     cart: [],
+    shipping: {
+      value: 0,
+      address: getEmptyAddress(),
+    },
   })
 
-  const { cart } = orderState
+  const { cart, shipping } = orderState
 
   function addItemToCart(item: CoffeeType) {
     dispatch(addItemAction(item))
@@ -65,6 +72,7 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
         removeOneItemQuantity,
         removeItem,
         itemsTotal,
+        shipping,
       }}
     >
       {children}
