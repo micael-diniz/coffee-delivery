@@ -1,4 +1,10 @@
-import { ReactNode, createContext, useContext, useReducer } from 'react'
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useMemo,
+  useReducer,
+} from 'react'
 import { orderReducer } from '../reducers/order/reducer'
 import { CoffeeType } from '../@types/coffee'
 import {
@@ -12,6 +18,7 @@ interface OrderContextType {
   addItemToCart: (item: CoffeeType) => void
   removeOneItemQuantity: (id: CoffeeType['id']) => void
   removeItem: (id: CoffeeType['id']) => void
+  itemsTotal: number
 }
 
 export const OrderContext = createContext({} as OrderContextType)
@@ -39,6 +46,17 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
     dispatch(removeItemAction(id))
   }
 
+  const itemsTotal = useMemo(
+    () =>
+      cart.reduce((acc, { quantity, price }) => {
+        if (quantity) {
+          return acc + quantity * price
+        }
+        return acc + price
+      }, 0),
+    [cart],
+  )
+
   return (
     <OrderContext.Provider
       value={{
@@ -46,6 +64,7 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
         addItemToCart,
         removeOneItemQuantity,
         removeItem,
+        itemsTotal,
       }}
     >
       {children}
