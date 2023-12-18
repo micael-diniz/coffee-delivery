@@ -1,35 +1,26 @@
 import { CoffeeType } from '../../../../@types/coffee'
+import { useOrder } from '../../../../contexts/OrderContext'
 import { CoffeeCartCard } from '../CoffeeCartCard'
 
 export function CoffeeCartList() {
-  const cart: CoffeeType[] = [
-    {
-      id: 'b5f3a0e7d2',
-      name: 'Expresso Tradicional',
-      description: 'O tradicional café feito com água quente e grãos moídos',
-      price: 990,
-      tags: ['tradicional'],
-      image: 'https://i.ibb.co/crhZzLs/expresso-tradicional.png',
-    },
-    {
-      id: '4b8d6f2c1e',
-      name: 'Latte',
-      description:
-        'Uma dose de café expresso com o dobro de leite e espuma cremosa',
-      price: 990,
-      tags: ['tradicional', 'com leite'],
-      image: 'https://i.ibb.co/gDpccbQ/latte.png',
-    },
-  ]
+  const { cart } = useOrder()
   return (
     <section>
-      <ul
-        className={`flex max-h-[24.6rem] flex-col gap-y-[4.8rem] overflow-x-hidden overflow-y-scroll pr-[0.8rem]`}
-      >
-        {cart.map((coffee) => (
-          <CoffeeCartCard key={coffee.id} coffee={coffee} />
-        ))}
-      </ul>
+      {cart.length ? (
+        <ul
+          className={`flex max-h-[24.6rem] flex-col gap-y-[4.8rem] overflow-x-hidden overflow-y-scroll pr-[0.8rem]`}
+        >
+          {cart.map((coffee) => (
+            <CoffeeCartCard key={coffee.id} coffee={coffee} />
+          ))}
+        </ul>
+      ) : (
+        <p
+          className={`text-center font-baloo2 text-[1.8rem] leading-[130%] text-gray-800`}
+        >
+          Carrinho vazio :(
+        </p>
+      )}
     </section>
   )
 }

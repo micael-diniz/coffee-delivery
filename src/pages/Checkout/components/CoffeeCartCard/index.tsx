@@ -2,6 +2,7 @@ import { Trash } from 'phosphor-react'
 import { CoffeeType } from '../../../../@types/coffee'
 import { Price } from '../../../../components/Price'
 import { QuantitySelector } from '../../../../components/QuantitySelector'
+import { useState } from 'react'
 
 type CoffeeCardCardProps = {
   coffee: CoffeeType
@@ -28,7 +29,10 @@ export function CoffeeCartCard({ coffee }: CoffeeCardCardProps) {
             />
           </div>
           <div className={`flex gap-x-[0.8rem]`}>
-            <QuantitySelector containerClass={`ml-0`} />
+            <QuantitySelector
+              containerClass={`ml-0`}
+              quantity={coffee.quantity as number}
+            />
             <button
               className={`flex items-center gap-x-[0.4rem] rounded-[6px] bg-gray-400 px-[0.8rem] py-[0.65rem] text-[1.2rem] uppercase leading-[160%] text-gray-700`}
             >

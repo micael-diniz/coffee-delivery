@@ -4,15 +4,15 @@ import { twMerge } from 'tailwind-merge'
 
 type QuantitySelectorProps = {
   quantity: number
-  onIncreaseQuantity: () => void
-  onDecreaseQuantity: () => void
+  onIncreaseQuantity?: () => void
+  onDecreaseQuantity?: () => void
   containerClass?: string
 }
 
 export function QuantitySelector({
   quantity,
-  onIncreaseQuantity,
-  onDecreaseQuantity,
+  onIncreaseQuantity = () => {},
+  onDecreaseQuantity = () => {},
   containerClass,
 }: QuantitySelectorProps) {
   const handleIncrease = useCallback(onIncreaseQuantity, [onIncreaseQuantity])
