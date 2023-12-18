@@ -44,6 +44,15 @@ export function orderReducer(state: OrderState, action: OrderAction) {
       })
     }
 
+    case ActionTypes.REMOVE_ITEM: {
+      const { id } = action.payload
+      const itemIndexInCart = state.cart.findIndex((i) => i.id === id)
+      if (itemIndexInCart === -1) return state
+      return produce(state, (draft) => {
+        draft.cart.splice(itemIndexInCart, 1)
+      })
+    }
+
     default:
       return state
   }

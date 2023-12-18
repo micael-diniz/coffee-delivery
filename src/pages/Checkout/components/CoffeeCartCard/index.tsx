@@ -9,7 +9,7 @@ type CoffeeCardCardProps = {
   coffee: CoffeeType
 }
 export function CoffeeCartCard({ coffee }: CoffeeCardCardProps) {
-  const { addItemToCart, removeOneItemQuantity } = useOrder()
+  const { addItemToCart, removeOneItemQuantity, removeItem } = useOrder()
 
   const handleAddToCart = useCallback(() => {
     const coffeeWithQty = { ...coffee, quantity: 1 }
@@ -19,6 +19,10 @@ export function CoffeeCartCard({ coffee }: CoffeeCardCardProps) {
   const handleRemoveOneItemQuantity = useCallback(() => {
     removeOneItemQuantity(coffee.id)
   }, [coffee.id, removeOneItemQuantity])
+
+  const handleRemoveItem = useCallback(() => {
+    removeItem(coffee.id)
+  }, [coffee.id, removeItem])
 
   return (
     <>
@@ -48,6 +52,7 @@ export function CoffeeCartCard({ coffee }: CoffeeCardCardProps) {
               onDecreaseQuantity={handleRemoveOneItemQuantity}
             />
             <button
+              onClick={handleRemoveItem}
               className={`flex items-center gap-x-[0.4rem] rounded-[6px] bg-gray-400 px-[0.8rem] py-[0.65rem] text-[1.2rem] uppercase leading-[160%] text-gray-700`}
             >
               <Trash size={16} className={`text-purple-500`} /> Remover
@@ -55,7 +60,6 @@ export function CoffeeCartCard({ coffee }: CoffeeCardCardProps) {
           </div>
         </div>
       </li>
-      {/* <div className={`h-[0.1rem] w-full bg-gray-400`} /> */}
     </>
   )
 }
