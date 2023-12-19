@@ -4,6 +4,7 @@ import { Price } from '../../../../components/Price'
 import { QuantitySelector } from '../../../../components/QuantitySelector'
 import { useCallback } from 'react'
 import { useOrder } from '../../../../contexts/OrderContext'
+import toast, { Toaster } from 'react-hot-toast'
 
 type CoffeeCardCardProps = {
   coffee: CoffeeType
@@ -22,6 +23,11 @@ export function CoffeeCartCard({ coffee }: CoffeeCardCardProps) {
 
   const handleRemoveItem = useCallback(() => {
     removeItem(coffee.id)
+    toast.dismiss()
+    toast.success('Item removido!', {
+      duration: 3000,
+      position: 'top-center',
+    })
   }, [coffee.id, removeItem])
 
   return (
@@ -57,6 +63,11 @@ export function CoffeeCartCard({ coffee }: CoffeeCardCardProps) {
             >
               <Trash size={16} className={`text-purple-500`} /> Remover
             </button>
+            <Toaster
+              toastOptions={{
+                className: `toastOptions text-[1.6rem]`,
+              }}
+            />
           </div>
         </div>
       </li>
