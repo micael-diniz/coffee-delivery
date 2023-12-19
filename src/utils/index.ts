@@ -9,3 +9,11 @@ export function getEmptyAddress() {
     state: '',
   }
 }
+
+export function getEmptyPayment() {
+  return {
+    id: '',
+    type: '',
+    title: '',
+  }
+}

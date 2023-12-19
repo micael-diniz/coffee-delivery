@@ -2,10 +2,12 @@ import { produce } from 'immer'
 import { CoffeeType } from '../../@types/coffee'
 import { ActionTypes, OrderAction } from './actions'
 import { ShippingType } from '../../@types/shipping'
+import { PaymentType } from '../../@types/payment'
 
 type OrderState = {
   cart: CoffeeType[]
   shipping: ShippingType
+  payment: PaymentType
 }
 
 export function orderReducer(state: OrderState, action: OrderAction) {
@@ -52,6 +54,12 @@ export function orderReducer(state: OrderState, action: OrderAction) {
       if (itemIndexInCart === -1) return state
       return produce(state, (draft) => {
         draft.cart.splice(itemIndexInCart, 1)
+      })
+    }
+
+    case ActionTypes.UPDATE_PAYMENT_METHOD: {
+      return produce(state, (draft) => {
+        draft.payment = action.payload.payment
       })
     }
 

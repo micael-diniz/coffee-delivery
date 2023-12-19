@@ -11,9 +11,11 @@ import {
   addItemAction,
   removeItemAction,
   removeOneItemQuantityAction,
+  updatePaymentMethodAction,
 } from '../reducers/order/actions'
-import { getEmptyAddress } from '../utils'
+import { getEmptyAddress, getEmptyPayment } from '../utils'
 import { ShippingType } from '../@types/shipping'
+import { PaymentType } from '../@types/payment'
 
 interface OrderContextType {
   cart: CoffeeType[]
@@ -22,6 +24,8 @@ interface OrderContextType {
   removeItem: (id: CoffeeType['id']) => void
   itemsTotal: number
   shipping: ShippingType
+  updatePaymentMethod: (payment: PaymentType) => void
+  payment: PaymentType
 }
 
 export const OrderContext = createContext({} as OrderContextType)
@@ -37,9 +41,10 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
       value: 0,
       address: getEmptyAddress(),
     },
+    payment: getEmptyPayment(),
   })
 
-  const { cart, shipping } = orderState
+  const { cart, shipping, payment } = orderState
 
   function addItemToCart(item: CoffeeType) {
     dispatch(addItemAction(item))
@@ -51,6 +56,10 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
 
   function removeItem(id: CoffeeType['id']) {
     dispatch(removeItemAction(id))
+  }
+
+  function updatePaymentMethod(payment: PaymentType) {
+    dispatch(updatePaymentMethodAction(payment))
   }
 
   const itemsTotal = useMemo(
@@ -73,6 +82,8 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
         removeItem,
         itemsTotal,
         shipping,
+        updatePaymentMethod,
+        payment,
       }}
     >
       {children}

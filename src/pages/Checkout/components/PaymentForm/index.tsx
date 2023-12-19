@@ -1,8 +1,13 @@
 import { Bank, CreditCard, CurrencyDollar, Money } from 'phosphor-react'
 import { getPaymentOptions } from '../../../../services/getPaymentOptions'
-import { useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
+import { useOrder } from '../../../../contexts/OrderContext'
+import { PaymentType } from '../../../../@types/payment'
+import { twMerge } from 'tailwind-merge'
+import toast, { Toaster } from 'react-hot-toast'
 
 export function PaymentForm() {
+  const { updatePaymentMethod, payment } = useOrder()
   const paymentOptions = useMemo(() => getPaymentOptions(), [])
   const paymentIcons = useMemo(
     () => [
@@ -12,6 +17,20 @@ export function PaymentForm() {
     ],
     [],
   )
+
+  const handleUpdatePaymentMethod = useCallback(
+    (payment: PaymentType) => {
+      console.log('here')
+      updatePaymentMethod(payment)
+      toast.dismiss()
+      toast.success('Pagamento atualizado!', {
+        duration: 50000,
+        position: 'top-center',
+      })
+    },
+    [updatePaymentMethod],
+  )
+
   return (
     <div
       className={`mt-[0.3rem] flex flex-col gap-y-[3.2rem] rounded-[6px] bg-gray-200 p-[4rem]`}
@@ -28,22 +47,32 @@ export function PaymentForm() {
         </div>
       </div>
       <div className={`flex gap-x-[1.2rem]`}>
-        {paymentOptions.map((payment) => {
+        {paymentOptions.map((pay) => {
           const PaymentIcon = paymentIcons.find(
-            (icon) => icon.type === payment.type,
+            (icon) => icon.type === pay.type,
           )?.Icon
+          const currentPaymentSelected = pay.id === payment.id
           return (
             <button
-              key={payment.id}
-              className={`flex flex-1 gap-x-[1.2rem] rounded-[6px] bg-gray-400 p-[1.6rem] text-[1.2rem] uppercase`}
+              key={pay.id}
+              onClick={() => handleUpdatePaymentMethod(pay)}
+              className={twMerge(
+                `flex flex-1 gap-x-[1.2rem] rounded-[6px] border-[1px] border-transparent bg-gray-400 p-[1.6rem] text-[1.2rem] uppercase transition hover:bg-gray-500`,
+                currentPaymentSelected && `border-purple-500 bg-purple-100`,
+              )}
             >
               {PaymentIcon && (
-                <PaymentIcon size={16} className={`text-purple-500`} />
+                <PaymentIcon size={16} className={` text-purple-500`} />
               )}
-              {payment.title}
+              {pay.title}
             </button>
           )
         })}
+        <Toaster
+          toastOptions={{
+            className: `toastOptions text-[1.6rem]`,
+          }}
+        />
       </div>
     </div>
   )
