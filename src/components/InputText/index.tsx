@@ -1,20 +1,33 @@
 import { InputHTMLAttributes, forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
+import { AddressFormSchemaType } from '../../contexts/CheckoutContext'
+import { FieldErrors } from 'react-hook-form'
+import { ErrorMessage } from '@hookform/error-message'
 
 export interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   sufix?: string
   sufixStyle?: string
   containerStyle?: string
   inputStyle?: string
+  errors?: FieldErrors<AddressFormSchemaType>
+  name: keyof AddressFormSchemaType
 }
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   (
-    { sufix, sufixStyle, containerStyle, inputStyle, ...props }: TextInputProps,
+    {
+      sufix,
+      sufixStyle,
+      containerStyle,
+      inputStyle,
+      errors,
+      name,
+      ...props
+    }: TextInputProps,
     ref,
   ) => {
     return (
-      <div className={twMerge(`relative`, containerStyle)}>
+      <div className={twMerge(`relative flex-col`, containerStyle)}>
         <input
           ref={ref}
           className={twMerge(
@@ -33,6 +46,9 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
             {sufix}
           </span>
         )}
+        <p>
+          <ErrorMessage errors={errors} name={name} />
+        </p>
       </div>
     )
   },
