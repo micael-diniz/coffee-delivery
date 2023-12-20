@@ -12,10 +12,15 @@ import {
   removeItemAction,
   removeOneItemQuantityAction,
   updateAddressFieldAction,
+  updateAddressValidStateAction,
   updatePaymentMethodAction,
 } from '../reducers/order/actions'
-import { getEmptyAddress, getEmptyPayment } from '../utils'
-import { ShippingType } from '../@types/shipping'
+import {
+  getEmptyAddress,
+  getEmptyPayment,
+  requiredAddressFields,
+} from '../utils'
+import { FieldError, ShippingType } from '../@types/shipping'
 import { PaymentType } from '../@types/payment'
 
 interface OrderContextType {
@@ -31,6 +36,8 @@ interface OrderContextType {
     name: keyof ShippingType['address'],
     value: string,
   ) => void
+  addressFormErrors: FieldError[]
+  updateAddressValidState: (valid: boolean) => void
 }
 
 export const OrderContext = createContext({} as OrderContextType)
@@ -45,7 +52,8 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
     shipping: {
       value: 0,
       address: getEmptyAddress(),
-      valid: false,
+      valid: true,
+      errors: [],
     },
     payment: getEmptyPayment(),
   })
@@ -75,6 +83,10 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
     dispatch(updateAddressFieldAction(name, value))
   }
 
+  function updateAddressValidState(valid: boolean) {
+    dispatch(updateAddressValidStateAction(valid))
+  }
+
   const itemsTotal = useMemo(
     () =>
       cart.reduce((acc, { quantity, price }) => {
@@ -85,6 +97,34 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
       }, 0),
     [cart],
   )
+  const addressFormErrors = useMemo(() => {
+    const errors: FieldError[] = []
+    requiredAddressFields.forEach((field: keyof ShippingType['address']) => {
+      const fieldState = shipping.address[field]
+      if (!fieldState.length) {
+        errors.push({
+          name: field,
+          message: 'Campo obrigatório!',
+        })
+      }
+
+      if (field === 'postalCode' && fieldState.length < 9) {
+        errors.push({
+          name: field,
+          message: 'Campo obrigatório!',
+        })
+      }
+
+      if (field === 'state' && fieldState.length < 2) {
+        errors.push({
+          name: field,
+          message: 'Campo obrigatório!',
+        })
+      }
+    })
+    return errors
+  }, [shipping.address])
+
   return (
     <OrderContext.Provider
       value={{
@@ -97,6 +137,8 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
         updatePaymentMethod,
         payment,
         updateAddressField,
+        addressFormErrors,
+        updateAddressValidState,
       }}
     >
       {children}

@@ -6,20 +6,19 @@ import { useMemo } from 'react'
 export function UserAddress() {
   const { shipping } = useOrder()
   const { address, valid } = shipping
+
   const cityAndState = useMemo(() => {
     const tempArr = [address.city, address.state]
-    const result = []
-    for (const item of tempArr) {
+    const result: string[] = []
+    tempArr.forEach((item) => {
       if (item.length) result.push(item)
-    }
+    })
     return result
   }, [address.city, address.state])
 
   const cityAndStateFormatted = useMemo(() => {
     let cityAndStateStr = ''
-    for (const index in cityAndState) {
-      const item = cityAndState[index]
-
+    cityAndState.forEach((item, index) => {
       if (item.length) {
         cityAndStateStr = cityAndStateStr.concat(item)
       }
@@ -30,7 +29,7 @@ export function UserAddress() {
       ) {
         cityAndStateStr = cityAndStateStr.concat(', ')
       }
-    }
+    })
     return cityAndStateStr
   }, [cityAndState])
 

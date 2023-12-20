@@ -1,12 +1,18 @@
 import { useCallback } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useOrder } from '../../../../contexts/OrderContext'
 
 export function ConfirmOrder() {
   const navigate = useNavigate()
+  const { addressFormErrors, updateAddressValidState } = useOrder()
 
   const handleSubmitOrder = useCallback(() => {
-    navigate('/checkout/order-placed')
-  }, [navigate])
+    if (addressFormErrors.length > 0) {
+      updateAddressValidState(false)
+    } else {
+      navigate('/checkout/order-placed')
+    }
+  }, [addressFormErrors.length, navigate, updateAddressValidState])
 
   return (
     <>

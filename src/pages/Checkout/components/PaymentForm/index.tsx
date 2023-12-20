@@ -20,7 +20,6 @@ export function PaymentForm() {
 
   const handleUpdatePaymentMethod = useCallback(
     (payment: PaymentType) => {
-      console.log('here')
       updatePaymentMethod(payment)
       toast.dismiss()
       toast.success('Pagamento atualizado!', {

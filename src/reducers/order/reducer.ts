@@ -70,6 +70,13 @@ export function orderReducer(state: OrderState, action: OrderAction) {
       })
     }
 
+    case ActionTypes.UPDATE_ADDRESS_VALID_STATE: {
+      return produce(state, (draft) => {
+        const { valid } = action.payload
+        draft.shipping.valid = valid
+      })
+    }
+
     default:
       return state
   }

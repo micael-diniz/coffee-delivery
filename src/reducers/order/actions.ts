@@ -8,6 +8,7 @@ export enum ActionTypes {
   REMOVE_ITEM = 'REMOVE_ITEM',
   UPDATE_PAYMENT_METHOD = 'UPDATE_PAYMENT_METHOD',
   UPDATE_ADDRESS_FIELD = 'UPDATE_ADDRESS_FIELD',
+  UPDATE_ADDRESS_VALID_STATE = 'UPDATE_ADDRESS_VALID_STATE',
 }
 
 type AddItemActionType = {
@@ -46,12 +47,20 @@ type UpdateAddressFieldActionType = {
   }
 }
 
+type UpdateAddressValidStateActionType = {
+  type: ActionTypes.UPDATE_ADDRESS_VALID_STATE
+  payload: {
+    valid: boolean
+  }
+}
+
 export type OrderAction =
   | AddItemActionType
   | RemoveOneItemQuantityActionType
   | RemoveItemActionType
   | UpdatePaymentMethodActionType
   | UpdateAddressFieldActionType
+  | UpdateAddressValidStateActionType
 
 export function addItemAction(item: CoffeeType): AddItemActionType {
   return {
@@ -102,6 +111,17 @@ export function updateAddressFieldAction(
     payload: {
       name,
       value,
+    },
+  }
+}
+
+export function updateAddressValidStateAction(
+  valid: boolean,
+): UpdateAddressValidStateActionType {
+  return {
+    type: ActionTypes.UPDATE_ADDRESS_VALID_STATE,
+    payload: {
+      valid,
     },
   }
 }

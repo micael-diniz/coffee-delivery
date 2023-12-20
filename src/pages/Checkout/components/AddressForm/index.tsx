@@ -4,7 +4,13 @@ import { useOrder } from '../../../../contexts/OrderContext'
 import { ChangeEvent, useCallback } from 'react'
 
 export function AddressForm() {
-  const { updateAddressField, shipping } = useOrder()
+  const {
+    updateAddressField,
+    addressFormErrors,
+    shipping,
+    updateAddressValidState,
+  } = useOrder()
+  const { address, valid: isAddressValid } = shipping
 
   const handlePostalCodeChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -32,8 +38,6 @@ export function AddressForm() {
     [updateAddressField],
   )
 
-  const { address } = shipping
-
   const postalCodeValue = address.postalCode
   const stateValue = address.state
 
@@ -60,6 +64,7 @@ export function AddressForm() {
             onChange={(e) => handlePostalCodeChange(e)}
             value={postalCodeValue}
             maxLength={9}
+            errors={!isAddressValid && addressFormErrors}
           />
           <TextInput
             type="text"
@@ -67,6 +72,7 @@ export function AddressForm() {
             inputStyle="w-full"
             name={'street'}
             onChange={(e) => updateAddressField('street', e.target.value)}
+            errors={!isAddressValid && addressFormErrors}
           />
           <div className={`flex gap-x-[1.2rem]`}>
             <TextInput
@@ -75,15 +81,17 @@ export function AddressForm() {
               containerStyle={`flex flex-[1]`}
               name={'number'}
               onChange={(e) => updateAddressField('number', e.target.value)}
+              errors={!isAddressValid && addressFormErrors}
             />
             <TextInput
               type="text"
               placeholder="Complemento"
               sufix="Opcional"
               sufixStyle={`right-[1.2rem] left-auto top-[50%] translate-y-[-50%]`}
-              containerStyle={`flex flex-[2] max-w-[34.8rem]`}
+              containerStyle={`flex flex-[2] max-w-[34.8rem] h-fit`}
               name={'complement'}
               onChange={(e) => updateAddressField('complement', e.target.value)}
+              errors={!isAddressValid && addressFormErrors}
             />
           </div>
           <div className={`flex gap-x-[1.2rem]`}>
@@ -95,6 +103,7 @@ export function AddressForm() {
               onChange={(e) =>
                 updateAddressField('neighbourhood', e.target.value)
               }
+              errors={!isAddressValid && addressFormErrors}
             />
             <TextInput
               type="text"
@@ -102,6 +111,7 @@ export function AddressForm() {
               containerStyle={`flex flex-[3] max-w-[27.6rem]`}
               name={'city'}
               onChange={(e) => updateAddressField('city', e.target.value)}
+              errors={!isAddressValid && addressFormErrors}
             />
             <TextInput
               type="text"
@@ -110,6 +120,8 @@ export function AddressForm() {
               name={'state'}
               onChange={handleStateChange}
               value={stateValue}
+              errors={!isAddressValid && addressFormErrors}
+              maxLength={2}
             />
           </div>
         </form>
