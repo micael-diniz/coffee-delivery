@@ -11,4 +11,5 @@ export type AddressType = {
 export type ShippingType = {
   address: AddressType
   value: number
+  valid: boolean
 }

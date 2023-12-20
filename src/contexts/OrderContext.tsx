@@ -45,6 +45,7 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
     shipping: {
       value: 0,
       address: getEmptyAddress(),
+      valid: false,
     },
     payment: getEmptyPayment(),
   })

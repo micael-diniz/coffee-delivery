@@ -5,7 +5,7 @@ import { useMemo } from 'react'
 
 export function UserAddress() {
   const { shipping } = useOrder()
-  const { address } = shipping
+  const { address, valid } = shipping
   const cityAndState = useMemo(() => {
     const tempArr = [address.city, address.state]
     const result = []
@@ -36,7 +36,7 @@ export function UserAddress() {
 
   const hasCityAndState = cityAndStateFormatted.length > 0
 
-  return hasCityAndState ? (
+  return hasCityAndState && valid ? (
     <Popover
       backdrop="transparent"
       placement="bottom-end"

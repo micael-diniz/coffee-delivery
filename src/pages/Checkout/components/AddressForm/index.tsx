@@ -20,8 +20,23 @@ export function AddressForm() {
     },
     [updateAddressField],
   )
+
+  const handleStateChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const cleanedInput = event.target.value.replace(/[^a-zA-Z]/g, '')
+
+      if (cleanedInput.length <= 2) {
+        updateAddressField('state', cleanedInput.toUpperCase())
+      }
+    },
+    [updateAddressField],
+  )
+
   const { address } = shipping
+
   const postalCodeValue = address.postalCode
+  const stateValue = address.state
+
   return (
     <div className={`mt-[0.3rem] rounded-[6px] bg-gray-200 p-[4rem]`}>
       <div className={`flex flex-col gap-y-[3.2rem]`}>
@@ -93,7 +108,8 @@ export function AddressForm() {
               placeholder="UF"
               containerStyle={`flex flex-[1] max-w-[6rem]`}
               name={'state'}
-              onChange={(e) => updateAddressField('state', e.target.value)}
+              onChange={handleStateChange}
+              value={stateValue}
             />
           </div>
         </form>
