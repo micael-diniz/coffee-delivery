@@ -1,9 +1,27 @@
 import { MapPinLine } from 'phosphor-react'
 import { TextInput } from '../../../../components/InputText'
 import { useOrder } from '../../../../contexts/OrderContext'
+import { ChangeEvent, useCallback } from 'react'
 
 export function AddressForm() {
-  const { updateAddressField } = useOrder()
+  const { updateAddressField, shipping } = useOrder()
+
+  const handlePostalCodeChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const curValue = event.target.value
+      const cleanedInput = curValue.replace(/[^\d]/g, '')
+
+      const formattedPostalCode = cleanedInput.replace(
+        /(\d{5})(\d{3})/,
+        '$1-$2',
+      )
+      if (formattedPostalCode.length > 9) return
+      updateAddressField('postalCode', formattedPostalCode)
+    },
+    [updateAddressField],
+  )
+  const { address } = shipping
+  const postalCodeValue = address.postalCode
   return (
     <div className={`mt-[0.3rem] rounded-[6px] bg-gray-200 p-[4rem]`}>
       <div className={`flex flex-col gap-y-[3.2rem]`}>
@@ -24,7 +42,9 @@ export function AddressForm() {
             placeholder="CEP"
             containerStyle={`max-w-[20rem]`}
             name={'postalCode'}
-            onChange={(e) => updateAddressField('postalCode', e.target.value)}
+            onChange={(e) => handlePostalCodeChange(e)}
+            value={postalCodeValue}
+            maxLength={9}
           />
           <TextInput
             type="text"
