@@ -26,13 +26,21 @@ export function QuantitySelector({
       )}
     >
       <button onClick={handleDecrease}>
-        <Minus size={14} weight="bold" className="text-purple-500" />
+        <Minus
+          size={14}
+          weight="bold"
+          className="text-purple-500 transition hover:text-purple-700"
+        />
       </button>
       <span className={`max-w-[2rem] text-center text-[1.6rem] text-gray-900`}>
         {quantity}
       </span>
       <button onClick={handleIncrease}>
-        <Plus size={16} weight="bold" className="text-purple-500" />
+        <Plus
+          size={16}
+          weight="bold"
+          className="text-purple-500 transition hover:text-purple-700"
+        />
       </button>
     </div>
   )

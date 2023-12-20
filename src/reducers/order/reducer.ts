@@ -63,6 +63,13 @@ export function orderReducer(state: OrderState, action: OrderAction) {
       })
     }
 
+    case ActionTypes.UPDATE_ADDRESS_FIELD: {
+      return produce(state, (draft) => {
+        const { name, value } = action.payload
+        draft.shipping.address[name] = value
+      })
+    }
+
     default:
       return state
   }

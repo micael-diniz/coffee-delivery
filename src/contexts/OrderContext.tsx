@@ -11,6 +11,7 @@ import {
   addItemAction,
   removeItemAction,
   removeOneItemQuantityAction,
+  updateAddressFieldAction,
   updatePaymentMethodAction,
 } from '../reducers/order/actions'
 import { getEmptyAddress, getEmptyPayment } from '../utils'
@@ -26,6 +27,10 @@ interface OrderContextType {
   shipping: ShippingType
   updatePaymentMethod: (payment: PaymentType) => void
   payment: PaymentType
+  updateAddressField: (
+    name: keyof ShippingType['address'],
+    value: string,
+  ) => void
 }
 
 export const OrderContext = createContext({} as OrderContextType)
@@ -62,6 +67,13 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
     dispatch(updatePaymentMethodAction(payment))
   }
 
+  function updateAddressField(
+    name: keyof ShippingType['address'],
+    value: string,
+  ) {
+    dispatch(updateAddressFieldAction(name, value))
+  }
+
   const itemsTotal = useMemo(
     () =>
       cart.reduce((acc, { quantity, price }) => {
@@ -72,7 +84,6 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
       }, 0),
     [cart],
   )
-
   return (
     <OrderContext.Provider
       value={{
@@ -84,6 +95,7 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
         shipping,
         updatePaymentMethod,
         payment,
+        updateAddressField,
       }}
     >
       {children}

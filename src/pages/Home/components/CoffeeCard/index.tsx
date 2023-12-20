@@ -75,7 +75,7 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
         />
         <button
           onClick={handleAddToCart}
-          className={`rounded-[6px] bg-purple-700 p-[0.8rem]`}
+          className={`rounded-[6px] bg-purple-700 p-[0.8rem] transition hover:bg-purple-500`}
         >
           <ShoppingCart size={22} weight="fill" className="fill-gray-200" />
         </button>

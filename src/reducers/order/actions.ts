@@ -1,11 +1,13 @@
 import { CoffeeType } from '../../@types/coffee'
 import { PaymentType } from '../../@types/payment'
+import { ShippingType } from '../../@types/shipping'
 
 export enum ActionTypes {
   ADD_ITEM = 'ADD_ITEM',
   REMOVE_ONE_ITEM_QUANTITY = 'REMOVE_ONE_ITEM_QUANTITY',
   REMOVE_ITEM = 'REMOVE_ITEM',
   UPDATE_PAYMENT_METHOD = 'UPDATE_PAYMENT_METHOD',
+  UPDATE_ADDRESS_FIELD = 'UPDATE_ADDRESS_FIELD',
 }
 
 type AddItemActionType = {
@@ -36,11 +38,20 @@ type UpdatePaymentMethodActionType = {
   }
 }
 
+type UpdateAddressFieldActionType = {
+  type: ActionTypes.UPDATE_ADDRESS_FIELD
+  payload: {
+    name: keyof ShippingType['address']
+    value: string
+  }
+}
+
 export type OrderAction =
   | AddItemActionType
   | RemoveOneItemQuantityActionType
   | RemoveItemActionType
   | UpdatePaymentMethodActionType
+  | UpdateAddressFieldActionType
 
 export function addItemAction(item: CoffeeType): AddItemActionType {
   return {
@@ -78,6 +89,19 @@ export function updatePaymentMethodAction(
     type: ActionTypes.UPDATE_PAYMENT_METHOD,
     payload: {
       payment,
+    },
+  }
+}
+
+export function updateAddressFieldAction(
+  name: keyof ShippingType['address'],
+  value: string,
+): UpdateAddressFieldActionType {
+  return {
+    type: ActionTypes.UPDATE_ADDRESS_FIELD,
+    payload: {
+      name,
+      value,
     },
   }
 }

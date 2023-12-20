@@ -1,9 +1,9 @@
 import { MapPinLine } from 'phosphor-react'
 import { TextInput } from '../../../../components/InputText'
-import { useCheckout } from '../../../../contexts/CheckoutContext'
+import { useOrder } from '../../../../contexts/OrderContext'
 
 export function AddressForm() {
-  const { register, addressFormErrors } = useCheckout()
+  const { updateAddressField } = useOrder()
   return (
     <div className={`mt-[0.3rem] rounded-[6px] bg-gray-200 p-[4rem]`}>
       <div className={`flex flex-col gap-y-[3.2rem]`}>
@@ -23,23 +23,23 @@ export function AddressForm() {
             type="text"
             placeholder="CEP"
             containerStyle={`max-w-[20rem]`}
-            errors={addressFormErrors}
-            {...register('postalCode')}
+            name={'postalCode'}
+            onChange={(e) => updateAddressField('postalCode', e.target.value)}
           />
           <TextInput
             type="text"
             placeholder="Rua"
             inputStyle="w-full"
-            {...register('street')}
-            errors={addressFormErrors}
+            name={'street'}
+            onChange={(e) => updateAddressField('street', e.target.value)}
           />
           <div className={`flex gap-x-[1.2rem]`}>
             <TextInput
               type="text"
               placeholder="Número"
               containerStyle={`flex flex-[1]`}
-              {...register('number')}
-              errors={addressFormErrors}
+              name={'number'}
+              onChange={(e) => updateAddressField('number', e.target.value)}
             />
             <TextInput
               type="text"
@@ -47,8 +47,8 @@ export function AddressForm() {
               sufix="Opcional"
               sufixStyle={`right-[1.2rem] left-auto top-[50%] translate-y-[-50%]`}
               containerStyle={`flex flex-[2] max-w-[34.8rem]`}
-              {...register('complement')}
-              errors={addressFormErrors}
+              name={'complement'}
+              onChange={(e) => updateAddressField('complement', e.target.value)}
             />
           </div>
           <div className={`flex gap-x-[1.2rem]`}>
@@ -56,22 +56,24 @@ export function AddressForm() {
               type="text"
               placeholder="Bairro"
               containerStyle={`flex flex-[2]`}
-              {...register('neighbourhood')}
-              errors={addressFormErrors}
+              name={'neighbourhood'}
+              onChange={(e) =>
+                updateAddressField('neighbourhood', e.target.value)
+              }
             />
             <TextInput
               type="text"
               placeholder="Cidade"
               containerStyle={`flex flex-[3] max-w-[27.6rem]`}
-              {...register('city')}
-              errors={addressFormErrors}
+              name={'city'}
+              onChange={(e) => updateAddressField('city', e.target.value)}
             />
             <TextInput
               type="text"
               placeholder="UF"
               containerStyle={`flex flex-[1] max-w-[6rem]`}
-              {...register('state')}
-              errors={addressFormErrors}
+              name={'state'}
+              onChange={(e) => updateAddressField('state', e.target.value)}
             />
           </div>
         </form>

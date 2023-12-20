@@ -1,22 +1,12 @@
 import { useCallback } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import {
-  AddressFormSchemaType,
-  useCheckout,
-} from '../../../../contexts/CheckoutContext'
 
 export function ConfirmOrder() {
-  const { handleSubmitAddressForm } = useCheckout()
   const navigate = useNavigate()
 
-  function submitOrder(data: AddressFormSchemaType) {
-    console.log({ data })
-  }
-
   const handleSubmitOrder = useCallback(() => {
-    handleSubmitAddressForm(submitOrder)()
-    // navigate('/checkout/order-placed')
-  }, [handleSubmitAddressForm, navigate])
+    navigate('/checkout/order-placed')
+  }, [navigate])
 
   return (
     <>

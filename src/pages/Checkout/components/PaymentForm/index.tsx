@@ -57,7 +57,7 @@ export function PaymentForm() {
               key={pay.id}
               onClick={() => handleUpdatePaymentMethod(pay)}
               className={twMerge(
-                `flex flex-1 gap-x-[1.2rem] rounded-[6px] border-[1px] border-transparent bg-gray-400 p-[1.6rem] text-[1.2rem] uppercase transition hover:bg-gray-500`,
+                `flex flex-1 gap-x-[1.2rem] rounded-[6px] border-[1px] border-transparent bg-gray-400 p-[1.6rem] text-[1.2rem] uppercase transition hover:border-transparent hover:bg-gray-500`,
                 currentPaymentSelected && `border-purple-500 bg-purple-100`,
               )}
             >

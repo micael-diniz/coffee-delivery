@@ -18,7 +18,7 @@ export function Minicart() {
     [cart],
   )
 
-  return (
+  return totalQuantity > 0 ? (
     <Badge
       content={totalQuantity}
       className="h-[2.4rem] w-[2.4rem] border-none bg-yellow-700 text-[1.2rem] font-bold text-white"
@@ -30,5 +30,12 @@ export function Minicart() {
         <ShoppingCart size={22} weight="fill" className="fill-yellow-700" />
       </button>
     </Badge>
+  ) : (
+    <button
+      onClick={() => navigate('/checkout')}
+      className="h-[4.5rem] min-w-[3.8rem] rounded-[6px] bg-yellow-100 px-[1.15rem] py-[0.94rem]"
+    >
+      <ShoppingCart size={22} weight="fill" className="fill-yellow-700" />
+    </button>
   )
 }
