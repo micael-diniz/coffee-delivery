@@ -32,7 +32,7 @@ export function PaymentForm() {
 
   return (
     <div
-      className={`mt-[0.3rem] flex flex-col gap-y-[3.2rem] rounded-[6px] bg-gray-200 p-[4rem]`}
+      className={`mt-[0.3rem] flex flex-col gap-y-[3.2rem] rounded-[6px] bg-gray-200 p-[3rem] lg:p-[4rem]`}
     >
       <div className={`flex gap-x-[0.8rem]`}>
         <CurrencyDollar size={22} className={`text-purple-500`} />
@@ -45,7 +45,7 @@ export function PaymentForm() {
           </p>
         </div>
       </div>
-      <div className={`flex gap-x-[1.2rem]`}>
+      <div className={`flex flex-col gap-[1.2rem] lg:flex-row`}>
         {paymentOptions.map((pay) => {
           const PaymentIcon = paymentIcons.find(
             (icon) => icon.type === pay.type,

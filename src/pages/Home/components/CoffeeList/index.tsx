@@ -11,7 +11,9 @@ export function CoffeeList() {
       <h3 className={`font-baloo2 text-[3.2rem] font-extrabold text-gray-800`}>
         Nossos cafés
       </h3>
-      <ul className={`flex flex-wrap gap-x-[3.2rem] gap-y-[4rem]`}>
+      <ul
+        className={`2lg:justify-start flex flex-wrap justify-center gap-x-[3.2rem] gap-y-[4rem]`}
+      >
         {coffeeList.map(
           (coffee) =>
             coffee.available && <CoffeeCard key={coffee.id} coffee={coffee} />,

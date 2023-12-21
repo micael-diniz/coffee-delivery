@@ -37,7 +37,9 @@ export function AddressForm() {
   const stateValue = address.state
 
   return (
-    <div className={`mt-[0.3rem] rounded-[6px] bg-gray-200 p-[4rem]`}>
+    <div
+      className={`mt-[0.3rem] rounded-[6px] bg-gray-200 p-[3rem] lg:p-[4rem]`}
+    >
       <div className={`flex flex-col gap-y-[3.2rem]`}>
         <div className={`flex gap-x-[0.8rem]`}>
           <MapPinLine size={22} className={`text-yellow-700`} />
