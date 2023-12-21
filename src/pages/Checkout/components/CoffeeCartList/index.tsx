@@ -5,7 +5,11 @@ import { CoffeeCartCard } from '../CoffeeCartCard'
 export function CoffeeCartList() {
   const { cart } = useOrder()
   return (
-    <section className={`min-h-[22rem]`}>
+    <section
+      className={`min-h-[22rem] ${
+        !cart.length ? 'flex items-center justify-center' : ''
+      }`}
+    >
       {cart.length ? (
         <ul
           className={`flex max-h-[24.6rem] flex-col gap-y-[4.8rem] overflow-x-hidden overflow-y-scroll pr-[0.8rem]`}
