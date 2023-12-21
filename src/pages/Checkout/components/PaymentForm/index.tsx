@@ -23,7 +23,7 @@ export function PaymentForm() {
       updatePaymentMethod(payment)
       toast.dismiss()
       toast.success('Pagamento atualizado!', {
-        duration: 50000,
+        duration: 3000,
         position: 'top-center',
       })
     },

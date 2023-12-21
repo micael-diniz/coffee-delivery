@@ -31,7 +31,7 @@ export function CoffeeCard({ coffee }: CoffeeCardProps) {
     addItemToCart(coffeeWithQty)
     toast.dismiss()
     toast.success('Item adicionado!', {
-      duration: 50000,
+      duration: 3000,
       position: 'top-center',
     })
   }, [addItemToCart, coffee, quantity])
