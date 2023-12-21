@@ -72,6 +72,7 @@ export function AddressForm() {
             inputStyle="w-full"
             name={'street'}
             onChange={(e) => updateAddressField('street', e.target.value)}
+            value={address.street}
             errors={!isAddressValid && addressFormErrors}
           />
           <div className={`flex gap-x-[1.2rem]`}>
@@ -81,6 +82,7 @@ export function AddressForm() {
               containerStyle={`flex flex-[1]`}
               name={'number'}
               onChange={(e) => updateAddressField('number', e.target.value)}
+              value={address.number}
               errors={!isAddressValid && addressFormErrors}
             />
             <TextInput
@@ -91,6 +93,7 @@ export function AddressForm() {
               containerStyle={`flex flex-[2] max-w-[34.8rem] h-fit`}
               name={'complement'}
               onChange={(e) => updateAddressField('complement', e.target.value)}
+              value={address.complement}
               errors={!isAddressValid && addressFormErrors}
             />
           </div>
@@ -103,6 +106,7 @@ export function AddressForm() {
               onChange={(e) =>
                 updateAddressField('neighbourhood', e.target.value)
               }
+              value={address.neighbourhood}
               errors={!isAddressValid && addressFormErrors}
             />
             <TextInput
@@ -111,6 +115,7 @@ export function AddressForm() {
               containerStyle={`flex flex-[3] max-w-[27.6rem]`}
               name={'city'}
               onChange={(e) => updateAddressField('city', e.target.value)}
+              value={address.city}
               errors={!isAddressValid && addressFormErrors}
             />
             <TextInput

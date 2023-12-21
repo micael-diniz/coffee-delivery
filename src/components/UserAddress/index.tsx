@@ -4,7 +4,7 @@ import { useOrder } from '../../contexts/OrderContext'
 import { useMemo } from 'react'
 
 export function UserAddress() {
-  const { shipping } = useOrder()
+  const { shipping, addressFormErrors } = useOrder()
   const { address, valid } = shipping
 
   const cityAndState = useMemo(() => {
@@ -34,8 +34,8 @@ export function UserAddress() {
   }, [cityAndState])
 
   const hasCityAndState = cityAndStateFormatted.length > 0
-
-  return hasCityAndState && valid ? (
+  console.log({ addressFormErrors })
+  return hasCityAndState && valid && !addressFormErrors.length ? (
     <Popover
       backdrop="transparent"
       placement="bottom-end"
@@ -49,13 +49,13 @@ export function UserAddress() {
       </PopoverTrigger>
       <PopoverContent className="flex  items-start gap-y-[0.5rem] bg-gray-100 p-[1.6rem] text-[1.4rem] text-purple-500">
         <p>
-          <strong>Street:</strong> L-24
+          <strong>Street:</strong> {address.street}
         </p>
         <p>
-          <strong>City:</strong> Aparecida de Goiânia
+          <strong>City:</strong> {address.city}
         </p>
         <p>
-          <strong>Zip Code:</strong> 74950-300
+          <strong>Zip Code:</strong> {address.postalCode}
         </p>
       </PopoverContent>
     </Popover>

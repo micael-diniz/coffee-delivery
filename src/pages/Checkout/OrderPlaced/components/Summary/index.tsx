@@ -1,6 +1,9 @@
 import { CurrencyDollar, MapPin, Timer } from 'phosphor-react'
+import { useOrder } from '../../../../../contexts/OrderContext'
 
 export function Summary() {
+  const { shipping, payment } = useOrder()
+  const { address } = shipping
   return (
     <ul
       className={`successSumaryBorder relative mt-[4rem] flex max-w-[52.6rem] flex-col gap-y-[3.2rem] rounded-bl-[36px] rounded-br-[6px] rounded-tl-[6px] rounded-tr-[36px] border-[1px] p-[4rem]`}
@@ -19,14 +22,15 @@ export function Summary() {
             <span
               className={`w-fit text-[1.6rem] font-bold leading-[130%] text-gray-700`}
             >
-              Rua João Daniel Martinelli, 102
+              {address.street}, {address.number}
+              {address.complement && ', ' + address.complement}
             </span>
           </div>
 
           <span
             className={`text-[1.6rem] font-normal leading-[130%] text-gray-700`}
           >
-            Farrapos - Porto Alegre, RS
+            {address.city}, {address.state}
           </span>
         </div>
       </li>
@@ -59,7 +63,7 @@ export function Summary() {
             Pagamento na entrega
           </p>
           <p className={`text-[1.6rem] font-bold leading-[130%] text-gray-700`}>
-            Cartão de Crédito
+            {payment.title}
           </p>
         </div>
       </li>

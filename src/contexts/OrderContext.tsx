@@ -2,6 +2,7 @@ import {
   ReactNode,
   createContext,
   useContext,
+  useEffect,
   useMemo,
   useReducer,
 } from 'react'
@@ -47,16 +48,30 @@ type OrderContextProviderProps = {
 }
 
 export function OrderContextProvider({ children }: OrderContextProviderProps) {
-  const [orderState, dispatch] = useReducer(orderReducer, {
-    cart: [],
-    shipping: {
-      value: 0,
-      address: getEmptyAddress(),
-      valid: true,
-      errors: [],
+  const [orderState, dispatch] = useReducer(
+    orderReducer,
+    {
+      cart: [],
+      shipping: {
+        value: 1000,
+        address: getEmptyAddress(),
+        valid: true,
+        errors: [],
+      },
+      payment: getEmptyPayment(),
     },
-    payment: getEmptyPayment(),
-  })
+    (initialState) => {
+      const storedStateAsJSON = localStorage.getItem(
+        '@coffee-delivery:order-state-1.0.0',
+      )
+
+      if (storedStateAsJSON) {
+        return JSON.parse(storedStateAsJSON)
+      }
+
+      return initialState
+    },
+  )
 
   const { cart, shipping, payment } = orderState
 
@@ -97,6 +112,7 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
       }, 0),
     [cart],
   )
+
   const addressFormErrors = useMemo(() => {
     const errors: FieldError[] = []
     requiredAddressFields.forEach((field: keyof ShippingType['address']) => {
@@ -124,6 +140,12 @@ export function OrderContextProvider({ children }: OrderContextProviderProps) {
     })
     return errors
   }, [shipping.address])
+
+  useEffect(() => {
+    const stateJSON = JSON.stringify(orderState)
+
+    localStorage.setItem('@coffee-delivery:order-state-1.0.0', stateJSON)
+  }, [orderState])
 
   return (
     <OrderContext.Provider
