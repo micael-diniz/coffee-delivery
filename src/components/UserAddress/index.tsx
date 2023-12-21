@@ -34,7 +34,7 @@ export function UserAddress() {
   }, [cityAndState])
 
   const hasCityAndState = cityAndStateFormatted.length > 0
-  console.log({ addressFormErrors })
+
   return hasCityAndState && valid && !addressFormErrors.length ? (
     <Popover
       backdrop="transparent"

@@ -4,12 +4,7 @@ import { useOrder } from '../../../../contexts/OrderContext'
 import { ChangeEvent, useCallback } from 'react'
 
 export function AddressForm() {
-  const {
-    updateAddressField,
-    addressFormErrors,
-    shipping,
-    updateAddressValidState,
-  } = useOrder()
+  const { updateAddressField, addressFormErrors, shipping } = useOrder()
   const { address, valid: isAddressValid } = shipping
 
   const handlePostalCodeChange = useCallback(
