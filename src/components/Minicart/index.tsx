@@ -21,7 +21,7 @@ export function Minicart() {
   return totalQuantity > 0 ? (
     <Badge
       content={totalQuantity}
-      className="right-[1.6rem] h-[2.4rem] w-[2.4rem] border-none bg-yellow-700 text-[1.2rem] font-bold text-white"
+      className="h-[2.4rem] w-[2.4rem] border-none bg-yellow-700 text-[1.2rem] font-bold text-white"
     >
       <button
         onClick={() => navigate('/checkout')}
