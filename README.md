@@ -30,3 +30,17 @@ Challenge proposed by Rocketseat's Ignite course related to Hooks in React.
 ## Design
 
 Figma: [Coffee Delivery](<https://www.figma.com/file/5yT9ZzZmRQRS4yivGGB3pl/Coffee-Delivery-%E2%80%A2-Desafio-React/duplicate?type=design&node-id=2-12&mode=design>)
+
+## Result
+
+### Home
+
+![image](https://github.com/micael-diniz/coffee-delivery/assets/45563240/ca904c97-20e1-45ec-9a51-d758141d8250)
+
+### Checkout
+
+![image](https://github.com/micael-diniz/coffee-delivery/assets/45563240/58d9f5d5-a52d-4ebf-a0a1-b14b1fa3d1fc)
+
+### Order placed
+
+![image](https://github.com/micael-diniz/coffee-delivery/assets/45563240/275d653e-f37f-4bd9-8b9a-7f0b9dc8382e)
