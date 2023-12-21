@@ -45,7 +45,7 @@ export function PaymentForm() {
           </p>
         </div>
       </div>
-      <div className={`flex flex-col gap-[1.2rem] lg:flex-row`}>
+      <div className={`2lg:flex-row flex flex-col gap-[1.2rem]`}>
         {paymentOptions.map((pay) => {
           const PaymentIcon = paymentIcons.find(
             (icon) => icon.type === pay.type,

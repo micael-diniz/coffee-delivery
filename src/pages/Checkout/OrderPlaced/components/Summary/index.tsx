@@ -14,17 +14,17 @@ export function Summary() {
         </p>
         <div className={`flex flex-col`}>
           <div className={`flex max-w-[31rem] gap-x-[4px]`}>
-            <span
-              className={`w-fit text-[1.6rem] font-normal leading-[130%] text-gray-700`}
-            >
-              Entrega em
-            </span>{' '}
-            <span
+            <p
               className={`w-fit text-[1.6rem] font-bold leading-[130%] text-gray-700`}
             >
+              <span
+                className={`flex w-fit text-[1.6rem] font-normal leading-[130%] text-gray-700`}
+              >
+                Entrega em
+              </span>{' '}
               {address.street}, {address.number}
               {address.complement && ', ' + address.complement}
-            </span>
+            </p>
           </div>
 
           <span
