@@ -19,15 +19,17 @@ export function PaymentForm() {
   )
 
   const handleUpdatePaymentMethod = useCallback(
-    (payment: PaymentType) => {
-      updatePaymentMethod(payment)
-      toast.dismiss()
-      toast.success('Pagamento atualizado!', {
-        duration: 3000,
-        position: 'top-center',
-      })
+    (pay: PaymentType) => {
+      if (payment.id !== pay.id) {
+        updatePaymentMethod(pay)
+        toast.dismiss()
+        toast.success('Pagamento atualizado!', {
+          duration: 3000,
+          position: 'top-center',
+        })
+      }
     },
-    [updatePaymentMethod],
+    [payment.id, updatePaymentMethod],
   )
 
   return (
@@ -45,7 +47,7 @@ export function PaymentForm() {
           </p>
         </div>
       </div>
-      <div className={`2lg:flex-row flex flex-col gap-[1.2rem]`}>
+      <div className={`flex flex-col gap-[1.2rem] 2lg:flex-row`}>
         {paymentOptions.map((pay) => {
           const PaymentIcon = paymentIcons.find(
             (icon) => icon.type === pay.type,
