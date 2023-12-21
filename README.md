@@ -29,6 +29,10 @@ Challenge proposed by Rocketseat's Ignite course related to Hooks in React.
 
 - Phosphor icons
 
+## Fonts
+
+- Font [Ballo2](https://fonts.google.com/specimen/Baloo+2?query=baloo) and [Roboto](https://fonts.google.com/specimen/Roboto?query=Roboto) from Google Fonts
+
 ## Design
 
 Figma: [Coffee Delivery](<https://www.figma.com/file/5yT9ZzZmRQRS4yivGGB3pl/Coffee-Delivery-%E2%80%A2-Desafio-React/duplicate?type=design&node-id=2-12&mode=design>)
