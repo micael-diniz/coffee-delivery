@@ -49,13 +49,13 @@ export function UserAddress() {
       </PopoverTrigger>
       <PopoverContent className="flex  items-start gap-y-[0.5rem] bg-gray-100 p-[1.6rem] text-[1.4rem] text-purple-500">
         <p>
-          <strong>Street:</strong> {address.street}
+          <strong>CEP:</strong> {address.postalCode}
         </p>
         <p>
-          <strong>City:</strong> {address.city}
+          <strong>Cidade:</strong> {address.city}
         </p>
         <p>
-          <strong>Zip Code:</strong> {address.postalCode}
+          <strong>Rua:</strong> {address.street}
         </p>
       </PopoverContent>
     </Popover>
